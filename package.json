@@ -19,7 +19,7 @@
   "scripts": {
     "dev": "vite --open",
     "start": "vite --open",
-    "predeploy": "npm run build",
+    "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
     "host": "vite --open --host",
     "build": "tsc && vite build",
