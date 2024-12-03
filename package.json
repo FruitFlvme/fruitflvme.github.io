@@ -15,7 +15,7 @@
     "rrd",
     "prettier"
   ],
-  "homepage": "https://FruitFlvme.github.io/one-page-project",
+  "homepage": "https://fruitflvme.github.io/one-page-project",
   "scripts": {
     "dev": "vite --open",
     "start": "vite --open",
