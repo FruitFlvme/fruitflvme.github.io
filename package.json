@@ -15,17 +15,12 @@
     "rrd",
     "prettier"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/emre-cil/vite-mui-ts.git"
-  },
-  "bugs": {
-    "url": "https://github.com/emre-cil/vite-mui-ts/issues"
-  },
-  "homepage": "https://github.com/emre-cil/vite-mui-ts#readme",
+  "homepage": "https://FruitFlvme.github.io/one-page-project",
   "scripts": {
     "dev": "vite --open",
     "start": "vite --open",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "host": "vite --open --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
