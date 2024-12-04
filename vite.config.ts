@@ -32,4 +32,7 @@ export default defineConfig({
       '@/i18n': '/src/i18n',
     },
   },
+  build: {
+    outDir: 'build', // Указываем, что выходная директория должна быть 'build'
+  },
 });
