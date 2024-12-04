@@ -1,7 +1,7 @@
 {
-  "name": "vite-mui-ts",
+  "name": "fruitflvme.github.io",
   "version": "1.0.0",
-  "description": "TypeScript + React + Redux + MUI + RRD + ESLint + Prettier => Boilerplate",
+  "description": "Black Cat",
   "license": "MIT",
   "author": "emrecil <info.emrecil@gmail.com>",
   "keywords": [
@@ -15,7 +15,7 @@
     "rrd",
     "prettier"
   ],
-  "homepage": "https://fruitflvme.github.io/one-page-project",
+  "homepage": "https://github.com/FruitFlvme/fruitflvme.github.io",
   "scripts": {
     "dev": "vite --open",
     "start": "vite --open",
