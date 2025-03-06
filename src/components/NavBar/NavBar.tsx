@@ -31,8 +31,8 @@ const NavBar = () => {
         <IconButton color={'inherit'} onClick={handleHome}>
           <Home />
         </IconButton>
-        <Button color={'inherit'} onClick={handleCat}>Кот</Button>
-        <Button color={'inherit'} onClick={handleMachine}>Машина</Button>
+        <Button color={'inherit'} onClick={handleCat}>Cat</Button>
+        <Button color={'inherit'} onClick={handleMachine}>Machine</Button>
       </Toolbar>
     </AppBar>
   );

@@ -1,87 +1,30 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Box, Button, Card, CardActions, CardContent, Container, Typography } from '@mui/material';
-
-interface Quote {
-  quote: string,
-  author: string,
-  index: number | null,
-}
-
-interface Data {
-  quotes: Quote[];
-}
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@/app/store.ts';
+import { fetchQuotes, setBackgroundColor, setQuote } from '@/features/quotes/quotesSlice.ts';
 
 const RandomQuoteMachine = () => {
-  const [data, setData] = useState<Data | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-  const [quote, setQuote] = useState<Quote>({
-    quote: '',
-    author: '',
-    index: null,
-  });
-  const [backgroundColor, setBackgroundColor] = useState('');
-
-  const src = 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json';
-
-  const randomQuote = () => {
-    if (data !== null) {
-      const randomizer = Math.floor(Math.random() * data.quotes.length);
-      const quoteObj = data['quotes'][randomizer];
-      setQuote({
-        quote: quoteObj.quote,
-        author: quoteObj.author,
-        index: randomizer,
-      });
-    }
-  };
-
-  const randomColor = () => {
-    const backgroundColors = [
-      '#ac3b61',
-      '#5783c9',
-      '#b06d25',
-      '#93b88f',
-      '#b29bc2',
-      '#750204'];
-
-    const index = Math.floor(Math.random() * backgroundColors.length);
-    setBackgroundColor(backgroundColors[index]);
-  };
+  const dispatch: AppDispatch = useDispatch();
+  const { loading, error, currentQuote, backgroundColor } = useSelector((state: RootState) => state.quotes);
 
   const handleClick = () => {
-    randomQuote();
-    randomColor();
+    dispatch(setBackgroundColor());
+    dispatch(setQuote());
   };
 
   useEffect(() => {
-    fetch(src)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw response;
-        }
-      })
-      .then(data => {
-        setData(data);
-        setQuote(data.quotes[Math.floor(Math.random() * data.quotes.length)]);
-        randomColor();
-      })
-      .catch(error => {
-        console.log(`Error: ${error}`);
-        setError(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [src]);
+    dispatch(fetchQuotes());
+  }, [dispatch]);
+
 
   if (loading) {
     return (
       <Container sx={{
         display: 'flex',
         justifyContent: 'center',
+        color: 'white',
+        marginTop: '10rem',
       }}>
         <Typography variant="h1" component="h1" gutterBottom>Loading...</Typography>
       </Container>
@@ -103,10 +46,10 @@ const RandomQuoteMachine = () => {
     <Fragment>
       <CardContent>
         <Typography variant="h3" gutterBottom>
-          {quote.quote}
+          {currentQuote.quote}
         </Typography>
         <Typography variant="body1" sx={{ fontStyle: 'italic' }} align="right">
-          - {quote.author}
+          - {currentQuote.author}
         </Typography>
       </CardContent>
       <CardActions>
@@ -126,12 +69,12 @@ const RandomQuoteMachine = () => {
     }}>
       <Card variant="elevation" sx={{
         width: {
-          xs: '80%',  // 100% ширины на экранах xs
-          sm: '50%',   // 50% ширины на экранах sm
-          md: '33.33%', // 33.33% ширины на экранах md
-          lg: '25%',    // 25% ширины на экранах lg
+          xs: '80%',
+          sm: '50%',
+          md: '33.33%',
+          lg: '25%',
         },
-        margin: 'auto', // Центрируем карточку
+        margin: 'auto',
       }}>{card}</Card>
     </Box>
   );
