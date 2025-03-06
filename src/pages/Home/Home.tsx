@@ -1,15 +1,19 @@
-import { Container, Stack } from '@mui/material';
-import Cat from '@/components/Cat/Cat.tsx';
-import Timer from '@/components/Timer/Timer.tsx';
+import { Typography } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+import NavBar from '@/components/NavBar/NavBar.tsx';
 
 const Home = () => {
   return (
-    <Container sx={{ py: 2, position: 'relative' }}>
-      <Stack gap={6} my={2}>
-        <Cat />
-        <Timer />
-      </Stack>
-    </Container>
+    <Grid container direction="column" justifyContent="center" alignItems="center" spacing={12}>
+      <Grid size="auto">
+        <NavBar />
+      </Grid>
+      <Grid container spacing={8}>
+        <Grid size="auto">
+          <Typography variant="h1" component="h1" gutterBottom>Welcome to the Home Page</Typography>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 
