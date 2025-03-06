@@ -124,7 +124,15 @@ const RandomQuoteMachine = () => {
       justifyContent: 'center',
       alignItems: 'center',
     }}>
-      <Card variant="elevation" sx={{ width: '400px' }}>{card}</Card>
+      <Card variant="elevation" sx={{
+        width: {
+          xs: '80%',  // 100% ширины на экранах xs
+          sm: '50%',   // 50% ширины на экранах sm
+          md: '33.33%', // 33.33% ширины на экранах md
+          lg: '25%',    // 25% ширины на экранах lg
+        },
+        margin: 'auto', // Центрируем карточку
+      }}>{card}</Card>
     </Box>
   );
 };
