@@ -4,7 +4,7 @@ import RandomQuoteMachineComponent from '@/components/RandomQuoteMachine/RandomQ
 
 const RandomQuoteMachine = () => {
   return (
-    <Grid container direction="column" justifyContent="center" alignItems="center" spacing={8}>
+    <Grid container direction="column" justifyContent="center" alignItems="center">
       <Grid size="auto">
         <NavBar />
       </Grid>
